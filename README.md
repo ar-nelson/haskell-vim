@@ -1,6 +1,11 @@
 Haskell Syntax/Indentation
 ==========================
 
+> **Modified by `ar-nelson`**: I tweaked `raichoo`'s original code to make it fit my preferences somewhat better. Notable changes:
+>
+> * Highlighting distinction between "keyword operators" (`=`, `->`, etc.) and normal operators.
+> * Unicode operators and `LANGUAGE UnicodeSyntax` are (mostly) supported.
+
 I was unhappy with the Haskell scripts that are
 shipped with vim, therefore I decided to make my
 own based on [idris-vim][].
