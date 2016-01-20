@@ -48,7 +48,10 @@ syn match haskellDelimiter  "(\|)\|\[\|\]\|,\|;\|{\|}"
 syn keyword haskellInfix infix infixl infixr
 syn keyword haskellBottom undefined error
 syn match haskellOperators #\(\(\i\|\s\|['"`,;()\[\]{}]\)\@!.\)\+#
-syn match haskellKeyOperators #\(^\|\i\|\s\|['"`,;()\[\]{}]\)\@<=\(\\\||\|=\|::\|->\|<-\|=>\|∷\|→\|←\|⇒\)\($\|\i\|\s\|['"`,;()\[\]{}]\)\@=#
+syn match haskellKeyOperators #\(^\|\i\|\s\|['"`,;()\[\]{}]\)\@<=\(|\|=\|::\|=>\|∷\|→\|←\|⇒\)\($\|\i\|\s\|['"`,;()\[\]{}]\)\@=#
+syn match haskellKeyOperators #\(^\|\i\|\s\|['"`,;()\[\]{}]\)\@<=->\($\|\i\|\s\|['"`,;()\[\]{}]\)\@=# conceal cchar=→
+syn match haskellKeyOperators #\(^\|\i\|\s\|['"`,;()\[\]{}]\)\@<=<-\($\|\i\|\s\|['"`,;()\[\]{}]\)\@=# conceal cchar=←
+syn match haskellKeyOperators #\(^\|\i\|\s\|['"`,;()\[\]{}]\)\@<=\\\($\|\i\|\s\|['"`,;()\[\]{}]\)\@=# conceal cchar=λ
 syn match haskellKeyOperators "\<_\>"
 syn match haskellQuote "\<'\+" contained
 syn match haskellQuotedType "\u\(\i\|'\)*\>" contained
@@ -121,6 +124,8 @@ highlight def link haskellString String
 highlight def link haskellChar String
 highlight def link haskellBacktick Operator
 highlight def link haskellPreProc Macro
+highlight! link Conceal Delimiter
+setlocal conceallevel=2
 
 if exists('g:haskell_enable_quantification') && g:haskell_enable_quantification == 1
   highlight def link haskellForall Operator
